@@ -1,22 +1,29 @@
 <div class="page-header">
-  <h1>Awesome cocktails <small>Get drunk with Rails</small></h1>
-</div>
-<div class="row">
-  <div class="col-sm-8">
-    <div class="list-group">
-      <% @cocktails.each do |cocktail| %>
-          <%= link_to cocktail.name, cocktail_path(cocktail), class: "list-group-item" %>
-      <% end %>
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Awesome cocktails</h1>
+    </div>
+    <div class="col-md-4">
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newCocktailModal">
+        Create New Cocktails
+      </button>
     </div>
   </div>
-  <div class="col-sm-4">
-    <h4>Add a new cocktail:</h4>
-    <%= simple_form_for @cocktail do |f| %>
-      <%= f.input :name %>
-      <%= f.input :directions, as: :text %>
-      <%= f.input :photo %>
-      <%= f.input :photo_cache, as: :hidden %>
-      <%= f.button :submit, class: "btn btn-success btn-block" %>
+</div>
+
+<%= render 'form-modal' %>
+
+<div class="row">
+  <% @cocktails.each do |cocktail| %>
+    <%= link_to cocktail_path(cocktail) do %>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <%= cl_image_tag cocktail.photo, height: 100, crop: :fill %>
+          <div class="caption">
+            <h3> <%= cocktail.name %> </h3>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 </div>
