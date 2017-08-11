@@ -20,6 +20,9 @@
 <div class="row">
   <div class="col-sm-8">
     <div>
+      <%= cl_image_tag @cocktail.photo, width: 150, crop: :fill %>
+    </div>
+    <div>
       <h3>Directions:</h3>
       <%= @cocktail.directions %>
     </div>
@@ -29,7 +32,7 @@
         <ul>
           <% @cocktail.doses.each do |dose| %>
             <li>
-              <%= dose.quantity %> | <%= dose.ingredient.name %> 
+              <%= dose.quantity %> | <%= dose.ingredient.name %>
             </li>
           <% end %>
         </ul>
