@@ -4,6 +4,7 @@ class CocktailsController < ApplicationController
   def index
     @cocktails = Cocktail.all
     @cocktail = Cocktail.new
+    @cocktail.doses.build # initialize empty doses collection
   end
 
   def create
@@ -29,7 +30,8 @@ class CocktailsController < ApplicationController
   private
 
   def cocktails_params
-    params.require(:cocktail).permit(:name, :directions, :photo, :photo_cache)
+    params.require(:cocktail).permit(:name, :directions, :photo, :photo_cache,
+                                     doses_attributes: [:id, :ingredient_id, :quantity, :_destroy])
   end
 
   def set_cocktail

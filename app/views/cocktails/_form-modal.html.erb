@@ -11,10 +11,17 @@
           <%= f.input :directions, as: :text %>
           <%= f.input :photo %>
           <%= f.input :photo_cache, as: :hidden %>
-      </div>
-      <div class="modal-footer">
-        <%= f.button :submit, class: "btn btn-success" %>
-      <% end %>
+          <div id="doses">
+            <%= f.simple_fields_for :doses do |dose| %>
+              <%= render 'dose_fields', f: dose %>
+              <div class="links">
+                <%= link_to_add_association 'add dose', f, :doses %>
+              </div>
+            <% end %>
+          </div>
+          <hr>
+          <%= f.button :submit, class: "btn btn-success" %>
+        <% end %>
       </div>
     </div>
   </div>
