@@ -1,5 +1,11 @@
-<div class="nested-fields">  
-  <%= f.association :ingredient %>
-  <%= f.input :quantity %>
-  <%= link_to_remove_association "remove dose", f %>
+<div class="nested-fields">
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.association :ingredient %>
+    </div>
+    <div class="col-sm-6">
+      <%= f.input :quantity %>
+    </div>
+  </div>
+  <%= link_to_remove_association "remove dose", f, class: "btn btn-danger btn-xs" %>
 </div>

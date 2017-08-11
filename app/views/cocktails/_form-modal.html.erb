@@ -15,12 +15,13 @@
             <%= f.simple_fields_for :doses do |dose| %>
               <%= render 'dose_fields', f: dose %>
               <div class="links">
-                <%= link_to_add_association 'add dose', f, :doses %>
+                <%= link_to_add_association 'add dose', f, :doses,
+                                              class: "btn btn-success btn-xs" %>
               </div>
             <% end %>
           </div>
           <hr>
-          <%= f.button :submit, class: "btn btn-success" %>
+          <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
