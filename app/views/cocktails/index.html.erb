@@ -1,17 +1,19 @@
-<h1>Awesome Cocktails</h1>
-
+<div class="page-header">
+  <h1>Awesome cocktails <small>Get drunk with Rails</small></h1>
+</div>
 <div class="row">
   <div class="col-sm-8">
-    <ul>
-    <% @cocktails.each do |cocktail| %>
-      <li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
-    <% end %>
-    </ul>
+    <div class="list-group">
+      <% @cocktails.each do |cocktail| %>
+          <%= link_to cocktail.name, cocktail_path(cocktail), class: "list-group-item" %>
+      <% end %>
+    </div>
   </div>
   <div class="col-sm-4">
+    <h4>Add a new cocktail:</h4>
     <%= simple_form_for @cocktail do |f| %>
       <%= f.input :name %>
-      <%= f.button :submit, class: "btn btn-success" %>
+      <%= f.button :submit, class: "btn btn-success btn-block" %>
     <% end %>
   </div>
 </div>
