@@ -19,24 +19,30 @@
 </div>
 <div class="row">
   <div class="col-sm-8">
-    <h3>Ingredients</h3>
-    <% if @cocktail.doses.any? %>
-      <ul>
-        <% @cocktail.doses.each do |dose| %>
-          <li>
-            <%= dose.ingredient.name %>: <%= dose.description %>
-          </li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>This cocktail has no ingredients yet.</p>
-    <% end %>
+    <div>
+      <h3>Directions:</h3>
+      <%= @cocktail.directions %>
+    </div>
+    <div>
+      <h3>Ingredients:</h3>
+      <% if @cocktail.doses.any? %>
+        <ul>
+          <% @cocktail.doses.each do |dose| %>
+            <li>
+              <%= dose.quantity %> | <%= dose.ingredient.name %> 
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>This cocktail has no ingredients yet.</p>
+      <% end %>
+    </div>
   </div>
   <div class="col-sm-4">
     <h3>Add ingredients:</h3>
     <%= simple_form_for [@cocktail, @dose] do |f| %>
       <%= f.input :ingredient_id, collection: @ingredients %>
-      <%= f.input :description %>
+      <%= f.input :quantity %>
       <%= f.button :submit, class: "btn btn-success" %>
     <% end %>
   </div>
