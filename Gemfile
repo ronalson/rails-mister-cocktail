@@ -41,6 +41,8 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'jquery-rails' # Add this line if you use Rails 5.1
 
+gem 'figaro'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
